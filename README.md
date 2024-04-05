@@ -1,1 +1,1 @@
-# shikiri-tasks-resource
+# shikiri-account-resource
