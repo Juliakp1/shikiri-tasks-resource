@@ -11,3 +11,4 @@ public interface TasksRepository extends CrudRepository<TasksModel, String> {
     Optional<TasksModel> findByUser(String user);
     
 }
+
