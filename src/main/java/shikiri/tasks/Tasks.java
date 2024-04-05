@@ -1,4 +1,4 @@
-package shikiri.task;
+package shikiri.tasks;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,8 +14,8 @@ public class Tasks {
 
     private String id;
     private String name;
-    private String email;
-    private String password;
-    private String hash;
+    private String description;
+    private Boolean done;
+    private String user;
     
 }

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: shikiri-account
+    name: shikiri-tasks
   datasource:
     url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/shikiri}
     username: ${DATABASE_USERNAME:shikiri}
@@ -8,16 +8,16 @@ spring:
     driver-class-name: org.postgresql.Driver
   flyway:
     baseline-on-migrate: true
-    schemas: account
+    schemas: tasks
   jpa:
     properties:
       hibernate:
-        default_schema: account
+        default_schema: tasks
 
 management:
   endpoints:
     web:
-      base-path: /accounts/actuator
+      base-path: /tasks/actuator
       exposure:
         include: [ 'prometheus' ]
 

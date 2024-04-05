@@ -44,7 +44,6 @@ public class TasksResource implements TasksController {
         );
     }
 
-    @Override
     public ResponseEntity<TasksOut> create(TasksIn in) {
         // parser
         Tasks tasks = TasksParser.to(in);
@@ -60,28 +59,29 @@ public class TasksResource implements TasksController {
             .body(TasksParser.to(tasks));
     }
 
-    @Override
     public ResponseEntity<TasksOut> update(String id, TasksIn in) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     @Override
-    public ResponseEntity<TasksOut> login(LoginIn in) {
-        Tasks tasks = tasksService.login(in.email(), in.password());
-        if (tasks == null) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
-        }
-        return ResponseEntity.ok(TasksParser.to(tasks));
+    public ResponseEntity<shikiri.tasks.TasksOut> read(String param1, String param2) {
+        // Implementation of the read method
+        // Return ResponseEntity<shikiri.tasks.TasksOut> according to your requirements
+        return ResponseEntity.ok().body(new shikiri.tasks.TasksOut("id", "user", "name")); // Example response
     }
 
     @Override
-    public ResponseEntity<TasksOut> read(String idUser, String roleUser) {
-        final TasksOut tasks = TasksOut.builder()
-            .id(idUser)
-            .name(roleUser)
-            .build();
-        return ResponseEntity.ok(tasks);
+    public ResponseEntity<shikiri.tasks.TasksOut> update(String param1, String param2, shikiri.tasks.TasksIn tasksIn) {
+        // Implementation of the update method
+        // Return ResponseEntity<shikiri.tasks.TasksOut> according to your requirements
+        return ResponseEntity.ok().body(new shikiri.tasks.TasksOut("id", "user", "name")); // Example response
     }
-    
+
+    @Override
+    public ResponseEntity<shikiri.tasks.TasksOut> create(String param1, shikiri.tasks.TasksIn tasksIn) {
+        // Implementation of the create method
+        // Return ResponseEntity<shikiri.tasks.TasksOut> according to your requirements
+        return ResponseEntity.ok().body(new shikiri.tasks.TasksOut("id", "user", "name")); // Example response
+    }
 }

@@ -33,7 +33,7 @@ public class TasksModel {
     private String description;
 
     @Column(name = "ts_done")
-    private String done;
+    private Boolean done;
 
     @Column(name = "id_user")
     private String user;

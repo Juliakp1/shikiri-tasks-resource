@@ -17,13 +17,7 @@ public class TasksService {
     private TasksRepository tasksRepository;
 
     public Tasks create(Tasks in) {
-        in.hash(calculateHash(in.password()));
-        in.password(null);
         return tasksRepository.save(new TasksModel(in)).to();
-    }
-
-    public Tasks read(@NonNull String id) {
-        return tasksRepository.findById(id).map(TasksModel::to).orElse(null);
     }
     
 }

@@ -1,0 +1,9 @@
+shikiri\tasks\TasksModel$TasksModelBuilder.class
+shikiri\tasks\TasksResource.class
+shikiri\tasks\TasksApplication.class
+shikiri\tasks\TasksRepository.class
+shikiri\tasks\TasksService.class
+shikiri\tasks\Tasks.class
+shikiri\tasks\Tasks$TasksBuilder.class
+shikiri\tasks\TasksModel.class
+shikiri\tasks\TasksParser.class
