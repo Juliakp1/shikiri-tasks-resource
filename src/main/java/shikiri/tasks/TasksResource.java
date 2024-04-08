@@ -59,29 +59,21 @@ public class TasksResource implements TasksController {
             .body(TasksParser.to(tasks));
     }
 
-    public ResponseEntity<TasksOut> update(String id, TasksIn in) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    public ResponseEntity<TasksOut> update(TasksIn in) {
+        // parser
+        Tasks tasks = TasksParser.to(in);
+        // update using service
+        tasks = tasksService.update(tasks);
+        // return
+        return ResponseEntity.ok(TasksParser.to(tasks));
     }
 
     @Override
-    public ResponseEntity<shikiri.tasks.TasksOut> read(String param1, String param2) {
-        // Implementation of the read method
-        // Return ResponseEntity<shikiri.tasks.TasksOut> according to your requirements
-        return ResponseEntity.ok().body(new shikiri.tasks.TasksOut("id", "user", "name")); // Example response
+    public ResponseEntity<shikiri.tasks.TasksOut> read(String user, String id) {
+        // read using service
+        Tasks tasks = tasksService.read(user, id);
+        // return
+        return ResponseEntity.ok(TasksParser.to(tasks));
     }
 
-    @Override
-    public ResponseEntity<shikiri.tasks.TasksOut> update(String param1, String param2, shikiri.tasks.TasksIn tasksIn) {
-        // Implementation of the update method
-        // Return ResponseEntity<shikiri.tasks.TasksOut> according to your requirements
-        return ResponseEntity.ok().body(new shikiri.tasks.TasksOut("id", "user", "name")); // Example response
-    }
-
-    @Override
-    public ResponseEntity<shikiri.tasks.TasksOut> create(String param1, shikiri.tasks.TasksIn tasksIn) {
-        // Implementation of the create method
-        // Return ResponseEntity<shikiri.tasks.TasksOut> according to your requirements
-        return ResponseEntity.ok().body(new shikiri.tasks.TasksOut("id", "user", "name")); // Example response
-    }
 }
