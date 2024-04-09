@@ -38,12 +38,20 @@ public class TasksModel {
     @Column(name = "id_user")
     private String user;
 
+    @Column(name = "id_tool")
+    private String tool;
+
+    @Column(name = "id_board")
+    private String board;
+
     public TasksModel(Tasks o) {
         this.id = o.id();
         this.name = o.name();
         this.description = o.description();
         this.done = o.done();
         this.user = o.user();
+        this.tool = o.tool();
+        this.board = o.board();
     }
     
     public Tasks to() {
@@ -53,6 +61,8 @@ public class TasksModel {
             .description(description)
             .done(done)
             .user(user)
+            .tool(tool)
+            .board(board)
             .build();
     }
     

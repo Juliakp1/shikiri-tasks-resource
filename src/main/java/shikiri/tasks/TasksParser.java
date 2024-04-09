@@ -7,6 +7,8 @@ public class TasksParser {
             .name(in.name())
             .user(in.user())
             .description(in.description())
+            .tool(in.tool())
+            .board(in.board())
             .done(in.done())
             .build();
     }
