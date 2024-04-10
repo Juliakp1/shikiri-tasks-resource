@@ -12,5 +12,13 @@ public class TasksService {
     public Tasks create(Tasks in) {
         return tasksRepository.save(new TasksModel(in)).to();
     }
+
+    public Tasks update(Tasks in) {
+        return tasksRepository.save(new TasksModel(in)).to();
+    }
+
+    public Tasks read(String user, String id) {
+        return tasksRepository.findById(id).get().to();
+    }
     
 }
