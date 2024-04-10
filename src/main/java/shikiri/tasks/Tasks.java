@@ -16,7 +16,6 @@ public class Tasks {
     private String name;
     private String description;
     private Boolean done;
-    private String user;
     private String tool;
     private String board;
     

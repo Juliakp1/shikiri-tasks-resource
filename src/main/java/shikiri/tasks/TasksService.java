@@ -17,7 +17,7 @@ public class TasksService {
         return tasksRepository.save(new TasksModel(in)).to();
     }
 
-    public Tasks read(String user, String id) {
+    public Tasks read(String id) {
         return tasksRepository.findById(id).get().to();
     }
     

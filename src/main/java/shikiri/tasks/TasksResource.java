@@ -69,9 +69,9 @@ public class TasksResource implements TasksController {
     }
 
     @Override
-    public ResponseEntity<shikiri.tasks.TasksOut> read(String user, String id) {
+    public ResponseEntity<shikiri.tasks.TasksOut> read(String id) {
         // read using service
-        Tasks tasks = tasksService.read(user, id);
+        Tasks tasks = tasksService.read(id);
         // return
         return ResponseEntity.ok(TasksParser.to(tasks));
     }

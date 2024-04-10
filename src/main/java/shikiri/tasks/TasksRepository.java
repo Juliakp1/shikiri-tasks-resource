@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TasksRepository extends CrudRepository<TasksModel, String> {
 
-    Optional<TasksModel> findByUser(String user);
+    Optional<TasksModel> findByBoard(String board);
     
 }
 

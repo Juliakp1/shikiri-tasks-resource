@@ -35,10 +35,7 @@ public class TasksModel {
     @Column(name = "ts_done")
     private Boolean done;
 
-    @Column(name = "id_user")
-    private String user;
-
-    @Column(name = "id_tool")
+    @Column(name = "ts_tool")
     private String tool;
 
     @Column(name = "id_board")
@@ -49,7 +46,6 @@ public class TasksModel {
         this.name = o.name();
         this.description = o.description();
         this.done = o.done();
-        this.user = o.user();
         this.tool = o.tool();
         this.board = o.board();
     }
@@ -60,7 +56,6 @@ public class TasksModel {
             .name(name)
             .description(description)
             .done(done)
-            .user(user)
             .tool(tool)
             .board(board)
             .build();
