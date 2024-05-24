@@ -1,6 +1,6 @@
 package shikiri.tasks;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TasksRepository extends CrudRepository<TasksModel, String> {
 
-    Optional<TasksModel> findByBoard(String board);
-    
-}
+    List<TasksModel> findByBoard(String boardId);
 
+    List<TasksModel> findAllByUserId(String userId);
+}
