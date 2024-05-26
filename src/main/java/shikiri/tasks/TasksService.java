@@ -20,7 +20,7 @@ public class TasksService {
         return tasksRepository.save(new TasksModel(in)).to();
     }
 
-    @CachePut(value = "tasksCache", key = "#id")
+    @CachePut(value = "tasksCache", key = "#result.id")
     public Tasks update(Tasks in) {
         return tasksRepository.save(new TasksModel(in)).to();
     }
@@ -32,14 +32,19 @@ public class TasksService {
                             .orElse(null);
     }
     
-    @Cacheable(value = "tasksCache", key = "#userId")
-    public List<Tasks> findAll(String userId) {
-        return tasksRepository.findAllByUserId(userId).stream().map(TasksModel::to).collect(Collectors.toList());
+    @Cacheable(value = "tasksCache", key = "#name")
+    public List<Tasks> findByNameContaining(String name) {
+        return tasksRepository.findByNameContaining(name).stream().map(TasksModel::to).collect(Collectors.toList());
     }
 
     @Cacheable(value = "tasksCache", key = "#boardId")
-    public List<Tasks> findByBoard(String boardId) {
-        return tasksRepository.findByBoard(boardId).stream().map(TasksModel::to).collect(Collectors.toList());
+    public List<Tasks> findByBoardId(String boardId) {
+        return tasksRepository.findByBoardId(boardId).stream().map(TasksModel::to).collect(Collectors.toList());
+    }
+
+    @Cacheable(value = "tasksCache", key = "#toolId")
+    public List<Tasks> findByToolId(String toolId) {
+        return tasksRepository.findByToolId(toolId).stream().map(TasksModel::to).collect(Collectors.toList());
     }
 
     @CacheEvict(value = "tasksCache", key = "#id")

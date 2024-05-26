@@ -35,19 +35,19 @@ public class TasksModel {
     @Column(name = "ts_done")
     private Boolean done;
 
-    @Column(name = "ts_tool")
-    private String tool;
+    @Column(name = "ts_toolId")
+    private String toolId;
 
-    @Column(name = "id_board")
-    private String board;
+    @Column(name = "id_boardId")
+    private String boardId;
 
     public TasksModel(Tasks o) {
         this.id = o.id();
         this.name = o.name();
         this.description = o.description();
         this.done = o.done();
-        this.tool = o.tool();
-        this.board = o.board();
+        this.toolId = o.toolId();
+        this.boardId = o.boardId();
     }
     
     public Tasks to() {
@@ -56,8 +56,8 @@ public class TasksModel {
             .name(name)
             .description(description)
             .done(done)
-            .tool(tool)
-            .board(board)
+            .toolId(toolId)
+            .boardId(boardId)
             .build();
     }
     

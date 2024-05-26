@@ -1,6 +1,7 @@
 package shikiri.tasks;
 
 import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,11 +46,8 @@ public class TasksResource implements TasksController {
     }
 
     public ResponseEntity<TasksOut> create(TasksIn in) {
-        // parser
         Tasks tasks = TasksParser.to(in);
-        // insert using service
         tasks = tasksService.create(tasks);
-        // return
         return ResponseEntity.created(
             ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -60,20 +58,39 @@ public class TasksResource implements TasksController {
     }
 
     public ResponseEntity<TasksOut> update(TasksIn in) {
-        // parser
         Tasks tasks = TasksParser.to(in);
-        // update using service
         tasks = tasksService.update(tasks);
-        // return
         return ResponseEntity.ok(TasksParser.to(tasks));
     }
 
     @Override
-    public ResponseEntity<shikiri.tasks.TasksOut> read(String id) {
-        // read using service
+    public ResponseEntity<TasksOut> getById(String id) {
         Tasks tasks = tasksService.read(id);
-        // return
         return ResponseEntity.ok(TasksParser.to(tasks));
+    }
+
+    @Override
+    public ResponseEntity<List<TasksOut>> findByNameContaining(String name) {
+        java.util.List<Tasks> tasks = tasksService.findByNameContaining(name);
+        return ResponseEntity.ok(tasks.stream().map(TasksParser::to).collect(java.util.stream.Collectors.toList()));
+    }
+
+    @Override
+    public ResponseEntity<List<TasksOut>> findByBoardId(String boardId) {
+        java.util.List<Tasks> tasks = tasksService.findByBoardId(boardId);
+        return ResponseEntity.ok(tasks.stream().map(TasksParser::to).collect(java.util.stream.Collectors.toList()));
+    }
+
+    @Override
+    public ResponseEntity<List<TasksOut>> findByToolId(String toolId) {
+        java.util.List<Tasks> tasks = tasksService.findByToolId(toolId);
+        return ResponseEntity.ok(tasks.stream().map(TasksParser::to).collect(java.util.stream.Collectors.toList()));
+    }
+
+    @Override
+    public ResponseEntity<Void> delete(String id) {
+        tasksService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
